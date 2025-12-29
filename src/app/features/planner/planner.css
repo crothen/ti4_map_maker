@@ -309,10 +309,12 @@ h2 {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: -30px;
+    /* Position above sidebar */
+    top: 0;
     right: 16px;
-    width: 40px;
-    height: 30px;
+    transform: translateY(-100%);
+    width: 44px;
+    height: 36px;
     background: #1e293b;
     border: 1px solid #475569;
     border-bottom: none;
@@ -320,7 +322,9 @@ h2 {
     color: #60a5fa;
     cursor: pointer;
     z-index: 60;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+    /* Transition for moving button */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .main-content {
@@ -329,14 +333,17 @@ h2 {
 
   .sidebar {
     width: 100%;
-    /* Default Minimized */
-    height: 60px;
-    flex: none;
     border-left: none;
     border-top: 1px solid #334155;
     display: flex;
     flex-direction: column;
-    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Animation via Flex. Height must be auto or calculated for flex to work smoothly */
+    flex: 0 0 60px;
+    /* Default Minimized */
+    height: auto;
+    transition: flex-grow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
     position: relative;
     background: #1e293b;
     z-index: 40;
@@ -349,62 +356,15 @@ h2 {
     /* Allow button to stick out top */
   }
 
-  /* Hide content that is NOT the header in minimized mode? 
-     Actually, if height is 60px, content below is cut off if we have background? 
-     Wait, overflow visible means content shows.
-     We need overflow: hidden for CONTENT, but explicit visible for Button?
-     Can't do both on same element.
-     
-     Hack: Button is child. We set sidebar overflow hidden.
-     We set button position fixed? No.
-     
-     Let's stick with: Sidebar overflow hidden. Button is inside, top right.
-     We just make the button appear "overlapping" by adding padding-top to sidebar and pulling button up?
-     Or just placing button at top inside (y=0) and sidebar has no border-top?
-     User said "overlaps the map".
-     
-     If I set `.sidebar { margin-top: -20px; padding-top: 20px; }`?
-     Then map is covered by 20px transparent sidebar. Button is there.
-     
-     Let's try: `margin-top: -30px;` on sidebar.
-     And `background-clip`?
-     
-     Simpler: 
-     Sidebar height includes the button area?
-     No, let's keep it simple.
-     Button is inside Sidebar. Top 0.
-     Sidebar border-top is ... below button?
-     
-     Let's just position button at `top: 0` right `0`.
-     And map is above.
-     If user wants "overlap", maybe they mean visual overlap.
-     If I use negative margin on Sidebar, it effectively pulls it up.
-     
-     Let's style the button to look like a tab sticking up.
-     `top: -30px`.
-     `sidebar.mobile-minimized { overflow: visible; }`.
-     The CONTENT of the sidebar (the long list) will flow down off screen.
-     User won't see it because it's "below fold".
-     Unless user scrolls BODY? Layout is `height: 100dvh; overflow: hidden;`.
-     So content flowing off screen is invisible. Safe!
-  */
+
 
   .sidebar.mobile-expanded {
-    flex: 1;
-    height: auto;
+    flex: 1 1 auto;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
-  /* When expanded, the button should probably move? 
-     User said "down arrow is just like X".
-     If expaned, button at top-right (inside header) is fine.
-     If we keep `top: -30px`, it floats above header?
-     In expanded mode (full screen), `top: -30px` is off screen top!
-     
-     So in `.sidebar.mobile-expanded .mobile-expand-btn` we need `top: 10px; right: 10px; border-radius: 4px; border-bottom: 1px solid...`.
-     Transition generic `top`.
-  */
+
 
   .sidebar.mobile-expanded .mobile-expand-btn {
     top: 10px;
@@ -430,8 +390,10 @@ h2 {
   }
 
   .map-container {
-    flex: 1;
+    flex: 1 1 auto;
     order: 0;
+    position: relative;
+    z-index: 10;
   }
 
   .map-container.mobile-hidden {
