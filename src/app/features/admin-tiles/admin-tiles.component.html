@@ -1,0 +1,53 @@
+<div class="admin-container">
+    <div class="toolbar">
+        <h2 style="margin: 0; margin-right: 20px;">System Tile Admin</h2>
+        <a routerLink="/"
+            style="color: #60a5fa; text-decoration: none; margin-right: 20px; display: flex; align-items: center;">&larr;
+            Back to Map</a>
+        <button class="btn-warning" (click)="importFromAssets()">Import from Assets (JSON)</button>
+        <div style="flex: 1;"></div>
+    </div>
+
+    <div class="content">
+        <!-- List Panel -->
+        <div class="list-panel">
+            <input type="text" [(ngModel)]="filter" placeholder="Filter tiles..."
+                style="padding: 8px; background: #334155; border: 1px solid #475569; color: white; border-radius: 4px; margin-bottom: 8px;">
+
+            <div *ngFor="let tile of filteredTiles" class="tile-item" [class.selected]="selectedTile?.id === tile.id"
+                (click)="selectTile(tile)">
+                <strong>{{ tile.id }}</strong> - {{ tile.name }}
+            </div>
+        </div>
+
+        <!-- Editor Panel -->
+        <div class="editor-panel" *ngIf="selectedTile">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Editing: {{ selectedTile.name }} (ID: {{ selectedTile.id }})</h3>
+                <button class="btn-success" (click)="saveChanges()">Save Changes</button>
+            </div>
+
+            <div class="editor-body">
+                <div class="json-column">
+                    <textarea class="json-editor" [(ngModel)]="jsonString" spellcheck="false"></textarea>
+                </div>
+                <div class="preview-column">
+                    <h4 style="margin: 0; color: #94a3b8; text-transform: uppercase; font-size: 0.8rem;">Tile Image</h4>
+                    <div
+                        style="background: black; padding: 10px; border: 1px solid #334155; border-radius: 4px; display: flex; justify-content: center; align-items: center;">
+                        <img [src]="getTileImageUrl(selectedTile.id)" class="preview-img" style="max-height: 300px;">
+                    </div>
+                    <div style="font-size: 0.8rem; color: #cbd5e1; text-align: center;">
+                        Values in JSON are data-only.<br>
+                        Image is static asset <code>{{getTileImageUrl(selectedTile.id)}}</code>.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-panel" *ngIf="!selectedTile"
+            style="align-items: center; justify-content: center; color: #64748b;">
+            Select a tile to edit
+        </div>
+    </div>
+</div>

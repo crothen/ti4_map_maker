@@ -1,0 +1,433 @@
+<div class="drawer-layout" [class.menu-open]="isMenuOpen">
+    <div class="page-content">
+        <header>
+            <div class="logo">Twilight Imperium Map Maker</div>
+            <div style="margin-left: auto;">
+                <button (click)="toggleMenu()"
+                    style="background: transparent; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0 10px;">
+                    ☰
+                </button>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="map-container" #mapContainer>
+                <canvas #mapCanvas class="map-canvas"></canvas>
+                <!-- Floating Toggle for Tile IDs -->
+                <button (click)="toggleTileIds()"
+                    style="position: absolute; top: 10px; right: 10px; z-index: 50; background: rgba(15, 23, 42, 0.8); color: white; border: 1px solid #475569; padding: 6px 12px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 6px;"
+                    title="Toggle Tile Numbers">
+                    <span [style.color]="showTileIds ? '#60a5fa' : '#94a3b8'">#</span>
+                    <span *ngIf="showTileIds" style="font-weight: bold;">ON</span>
+                    <span *ngIf="!showTileIds" style="color: #94a3b8;">OFF</span>
+                </button>
+
+                <!-- Tile Summary Card (Visible when Tile IDs are ON) -->
+                <div *ngIf="showTileIds && usedTileIds.length > 0"
+                    style="position: absolute; top: 50px; right: 10px; z-index: 50; background: rgba(15, 23, 42, 0.9); border: 1px solid #475569; border-radius: 4px; padding: 10px; max-width: 200px; max-height: 80vh; overflow-y: auto; color: #cbd5e1; font-size: 0.85rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);">
+                    <h4
+                        style="margin: 0 0 8px 0; font-size: 0.9rem; color: #e2e8f0; border-bottom: 1px solid #334155; padding-bottom: 4px;">
+                        Used Tiles ({{usedTileIds.length}})</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                        <span *ngFor="let tid of usedTileIds"
+                            style="background: #334155; color: white; padding: 2px 6px; border-radius: 2px; font-weight: bold;">{{tid}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <!-- Public Map Info (ReadOnly) -->
+                <div *ngIf="(authService.user$ | async) === null"
+                    style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #334155;">
+                    <div style="margin-bottom: 1rem;">
+                        <h2 style="font-size: 1.5rem; font-weight: bold; color: #e2e8f0; margin: 0 0 0.5rem 0;">{{
+                            mapName }}
+                        </h2>
+                        <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; color: #94a3b8;">
+                            <span>{{ playerCount }} Players</span>
+                            <span *ngIf="currentMapId" style="font-family: monospace; font-size: 0.75rem;">ID:
+                                {{currentMapId}}</span>
+                        </div>
+                    </div>
+                    <button *ngIf="currentMapId" (click)="shareMap()"
+                        style="width: 100%; background: #8b5cf6; color: white; padding: 0.5rem; border: none; border-radius: 0.25rem; cursor: pointer; font-weight: bold;">
+                        Share Map Link
+                    </button>
+                </div>
+
+                <!-- Authenticated Controls Header -->
+                <div *ngIf="authService.user$ | async"
+                    style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #334155;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h2 style="font-size: 1.25rem; font-weight: bold; color: #e2e8f0; margin: 0;">Map Planner</h2>
+
+                        <!-- View/Edit Toggle -->
+                        <label style="position: relative; display: inline-flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" [(ngModel)]="isEditMode" style="display: none;">
+                            <div class="toggle-track" [style.background]="isEditMode ? '#059669' : '#334155'"
+                                style="width: 2.5rem; height: 1.25rem; border-radius: 9999px; transition: background-color 0.2s; position: relative;">
+                                <div class="toggle-thumb"
+                                    [style.transform]="isEditMode ? 'translateX(1.25rem)' : 'translateX(0)'"
+                                    style="position: absolute; top: 2px; left: 2px; background: white; width: 1rem; height: 1rem; border-radius: 50%; transition: transform 0.2s;">
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Global Action Buttons and Map Metadata -->
+                    <div *ngIf="authService.user$ | async" style="margin-bottom: 1rem;">
+                        <div style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem;">
+                            <div style="flex: 2; display: flex; flex-direction: column;">
+                                <input type="text" [(ngModel)]="mapName" placeholder="Map Name..."
+                                    style="width: 100%; font-size: 0.8rem; padding: 6px; border-radius: 4px; border: 1px solid #475569; background: #0f172a; color: white;">
+                                <div *ngIf="currentMapId"
+                                    style="font-size: 0.65rem; color: #64748b; font-family: monospace; margin-top: 2px; padding-left: 2px;">
+                                    ID: {{currentMapId}}
+                                </div>
+                            </div>
+
+                            <div style="flex: 1; display: flex; flex-direction: column;">
+                                <div style="position: relative; display: flex; align-items: center;">
+                                    <span
+                                        style="position: absolute; left: 8px; font-size: 0.7rem; color: #94a3b8; pointer-events: none;">Players:</span>
+                                    <input type="number" [(ngModel)]="playerCount" placeholder="#" min="1" max="8"
+                                        title="Number of Players"
+                                        style="width: 100%; font-size: 0.8rem; padding: 6px 6px 6px 52px; border-radius: 4px; border: 1px solid #475569; background: #0f172a; color: white;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons removed -->
+                    </div>
+                </div>
+
+                <!-- Shape Editor Section -->
+                <div *ngIf="authService.user$ | async"
+                    style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #334155;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;"
+                        [style.margin-bottom]="isShapeEditMode ? '1rem' : '0'">
+                        <h2 style="font-size: 1.25rem; font-weight: bold; color: #e2e8f0; margin: 0;">Shape Editor</h2>
+
+                        <label style="position: relative; display: inline-flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" [(ngModel)]="isShapeEditMode" (change)="onShapeEditModeChange()"
+                                style="display: none;">
+                            <div class="toggle-track" [style.background]="isShapeEditMode ? '#34d399' : '#334155'"
+                                style="width: 2.5rem; height: 1.25rem; border-radius: 9999px; transition: background-color 0.2s; position: relative;">
+                                <div class="toggle-thumb"
+                                    [style.transform]="isShapeEditMode ? 'translateX(1.25rem)' : 'translateX(0)'"
+                                    style="position: absolute; top: 2px; left: 2px; background: white; width: 1rem; height: 1rem; border-radius: 50%; transition: transform 0.2s;">
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Shape Tools (Only Visible when Enabled) -->
+                    <div *ngIf="isShapeEditMode">
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <button (click)="resetMap()"
+                                style="flex: 1; padding: 0.25rem 0.5rem; background: #dc2626; border-radius: 0.25rem; font-size: 0.75rem; color: white; border: none; cursor: pointer;">
+                                Reset Shape
+                            </button>
+                        </div>
+
+                        <!-- Shape Persistence UI -->
+                        <div style="margin-bottom: 0.5rem;">
+                            <input type="text" [(ngModel)]="shapeNameInput" placeholder="Shape Name..."
+                                style="width: 100%; font-size: 0.8rem; padding: 6px; border-radius: 4px; border: 1px solid #475569; background: #1e293b; color: white;">
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button (click)="saveShape()" [disabled]="!shapeNameInput"
+                                style="flex: 1; padding: 6px; background: #2563eb; color: white; border: none; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">
+                                Save Shape
+                            </button>
+                            <button (click)="showShapeLoadModal = true"
+                                style="flex: 1; padding: 6px; background: #475569; color: white; border: none; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">
+                                Load...
+                            </button>
+                        </div>
+
+                        <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.75rem; font-style: italic;">
+                            Click hexes to toggle them active. Center is fixed.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- System Details Panel (When Hex Selected) -->
+                <div *ngIf="selectedHex && !isShapeEditMode"
+                    style="margin-bottom: 1.5rem; padding: 1rem; background: #1e293b; border-radius: 0.25rem; border: 1px solid #334155;">
+                    <h3
+                        style="font-size: 1rem; font-weight: bold; color: #60a5fa; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; margin-top: 0;">
+                        Selected System
+                    </h3>
+
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+                        <div
+                            style="width: 120px; height: 138px; background: black; border: 1px solid #475569; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+                            <img *ngIf="getTileUrl(selectedHex.id)" [src]="getTileUrl(selectedHex.id)"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                            <span *ngIf="!getTileUrl(selectedHex.id)" style="color: #94a3b8;">{{ selectedHex.id
+                                }}</span>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: white;">Tile {{ selectedHex.id }}
+                            </div>
+
+                            <div *ngIf="getSystemData(selectedHex.id) as sys">
+                                <div style="font-size: 1.1rem; color: #34d399; font-weight: bold; margin-bottom: 4px;">
+                                    {{ sys.name }}
+                                </div>
+
+                                <div *ngIf="sys.anomalies?.length" style="color: #ef4444; font-size: 0.9rem;">
+                                    {{ sys.anomalies.join(', ') }}
+                                </div>
+                                <div *ngIf="sys.wormhole" style="color: #a855f7; font-size: 0.9rem;">
+                                    {{ sys.wormhole }} Wormhole
+                                </div>
+
+                                <div *ngIf="sys.planets?.length > 0" style="margin-top: 0.5rem;">
+                                    <div *ngFor="let p of sys.planets"
+                                        style="border-top: 1px solid #334155; padding-top: 6px; margin-top: 6px;">
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: baseline;">
+                                            <span style="color: #e2e8f0; font-size: 1rem; font-weight: 500;">{{ p.name
+                                                }}</span>
+                                            <span style="color: #94a3b8; font-size: 0.85rem; font-style: italic;">{{
+                                                p.trait
+                                                }}</span>
+                                        </div>
+                                        <div style="display: flex; gap: 12px; margin-top: 4px;">
+                                            <span style="font-size: 0.9rem; color: #fbbf24;">Res: {{p.resources}}</span>
+                                            <span style="font-size: 0.9rem; color: #60a5fa;">Inf: {{p.influence}}</span>
+                                        </div>
+                                        <div *ngIf="p.tech" style="font-size: 0.9rem; color: #10b981;">Tech: {{ p.tech
+                                            }}</div>
+                                        <div *ngIf="p.legendaryAbility"
+                                            style="margin-top: 6px; padding: 6px; background: rgba(234, 179, 8, 0.1); border-left: 2px solid #eab308; border-radius: 2px;">
+                                            <div
+                                                style="color: #eab308; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">
+                                                ★ {{ p.legendaryAbility.title }}</div>
+                                            <div style="color: #cbd5e1; font-size: 0.85rem; margin-top: 2px;">{{
+                                                p.legendaryAbility.text }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style="font-size: 0.85rem; color: #94a3b8; margin-top: 8px; border-top: 1px dashed #334155; padding-top: 4px;">
+                                Pos: {{ selectedHex.position }} (q:{{selectedHex.q}}, r:{{selectedHex.r}})
+                            </div>
+                        </div>
+                    </div>
+
+                    <button *ngIf="isEditMode" (click)="openTileSelectorForSelection()"
+                        style="width: 100%; padding: 0.5rem; background: #3b82f6; color: white; border: none; border-radius: 0.25rem; cursor: pointer; font-weight: bold;">
+                        Change System
+                    </button>
+                </div>
+
+
+
+
+            </div> <!-- Close Sidebar -->
+        </div> <!-- Close main-content -->
+
+        <!-- Menu Overlay -->
+        <div *ngIf="isMenuOpen" (click)="toggleMenu()"
+            style="position: absolute; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; cursor: default;"></div>
+    </div> <!-- Close page-content -->
+
+    <!-- Side Drawer -->
+    <div class="side-drawer">
+        <div class="menu-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-weight: bold; font-size: 1.2rem; color: #e2e8f0;">Menu</div>
+            <button (click)="toggleMenu()"
+                style="background: transparent; border: none; color: #94a3b8; cursor: pointer; font-size: 1.5rem;">&times;</button>
+        </div>
+
+        <div class="menu-body">
+            <ng-container *ngIf="authService.user$ | async as user; else guestMenu">
+                <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed #334155;">
+                    <span style="font-size: 0.8rem; color: #94a3b8;">Signed in as</span><br>
+                    <strong style="color: white; font-size: 0.9rem;">{{ user.email }}</strong>
+                </div>
+
+                <a *ngIf="authService.isAdmin$ | async" routerLink="/admin" class="menu-btn"
+                    style="display: block; color: #ef4444; font-weight: bold; margin-bottom: 1rem;">
+                    Admin Panel
+                </a>
+
+                <div class="menu-section-title">Map Actions</div>
+                <button (click)="newMap(); toggleMenu()" class="menu-btn">New Map</button>
+                <button (click)="saveMapState(); toggleMenu()" class="menu-btn">Save Map</button>
+                <button (click)="cloneMap(); toggleMenu()" class="menu-btn">Clone Map</button>
+                <button *ngIf="currentMapId" (click)="shareMap(); toggleMenu()" class="menu-btn"
+                    style="color: #a78bfa;">Share Link</button>
+
+                <div class="menu-section-title">My Maps</div>
+                <div
+                    style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; min-height: 100px;">
+                    <button *ngFor="let map of availableMaps" (click)="loadSavedMap(map)" class="map-list-btn">
+                        {{ map.name }}
+                    </button>
+                    <div *ngIf="availableMaps.length === 0"
+                        style="padding: 10px; color: #64748b; font-size: 0.8rem; font-style: italic; text-align: center;">
+                        No saved maps found.
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-template #guestMenu>
+                <div style="text-align: center; padding: 2rem 0;">
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Sign in to save and manage your
+                        maps.</p>
+                    <button (click)="authService.loginWithGoogle(); toggleMenu()"
+                        style="width: 100%; background: #3b82f6; color: white; padding: 12px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Login
+                        with Google</button>
+                </div>
+            </ng-template>
+        </div>
+
+        <div class="menu-footer" *ngIf="authService.user$ | async">
+            <button (click)="authService.logout(); toggleMenu()" class="menu-btn"
+                style="width: 100%; text-align: center; color: #94a3b8;">
+                Logout
+            </button>
+        </div>
+    </div>
+</div> <!-- Close drawer-layout -->
+<!-- Modals Follow -->
+<div *ngIf="isContextOpen" [style.top.px]="contextMenuPos.y" [style.left.px]="contextMenuPos.x"
+    (contextmenu)="$event.preventDefault()"
+    style="position: fixed; background: #0f172a; border: 1px solid #475569; padding: 5px; border-radius: 4px; z-index: 9999; box-shadow: 0 4px 6px rgba(0,0,0,0.5); min-width: 150px;">
+    <button (click)="openTileSelector()"
+        style="width: 100%; text-align: left; padding: 8px; background: transparent; color: white; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+        <span>🔄</span> Select System
+    </button>
+</div>
+
+<!-- Overlays -->
+<div *ngIf="isContextOpen" (click)="isContextOpen = false" (contextmenu)="$event.preventDefault()"
+    style="position: fixed; inset: 0; z-index: 9998; background: transparent;"></div>
+
+<!-- Shape Load Modal -->
+<div *ngIf="showShapeLoadModal"
+    style="position: fixed; inset: 0; z-index: 10000; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px);">
+    <div
+        style="background: #1e293b; border: 1px solid #475569; border-radius: 0.5rem; max-width: 500px; width: 90%; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column;">
+        <div
+            style="padding: 1rem; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; background: #0f172a;">
+            <h3 style="margin: 0; color: white; font-size: 1rem; font-weight: bold;">Load Shape</h3>
+            <button (click)="showShapeLoadModal = false"
+                style="background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.25rem;">&times;</button>
+        </div>
+        <div style="padding: 1rem; overflow-y: auto;">
+            <div *ngIf="availableShapes.length === 0" style="color: #94a3b8; text-align: center;">No saved
+                shapes found.
+            </div>
+            <div *ngFor="let shape of availableShapes"
+                style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; border-bottom: 1px solid #334155;">
+                <span style="color: #e2e8f0; font-weight: 500;">{{ shape.name }}</span>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button (click)="importShape(shape)"
+                        style="padding: 4px 8px; background: #059669; color: white; border: none; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Load</button>
+                    <button (click)="deleteShape(shape.id)"
+                        style="padding: 4px 8px; background: #dc2626; color: white; border: none; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tile Selector Modal -->
+<div *ngIf="isTileSelectorOpen"
+    style="position: fixed; inset: 0; z-index: 10000; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px);">
+    <div
+        style="background: #1e293b; border: 1px solid #475569; border-radius: 0.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); width: 800px; max-width: 95vw; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden;">
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #334155; background: #0f172a;">
+            <h3 style="font-size: 1.125rem; font-weight: bold; color: white; margin: 0;">Select System Tile</h3>
+            <button (click)="isTileSelectorOpen = false"
+                style="color: #94a3b8; cursor: pointer; background: transparent; border: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="height: 1.5rem; width: 1.5rem;" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <div style="padding: 1rem; background: #0f172a; border-bottom: 1px solid #334155;">
+            <input type="text" [(ngModel)]="tileSearchTerm" placeholder="Search Tile ID or Name..." autofocus
+                style="width: 100%; background: #1e293b; border: 1px solid #475569; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; outline: none;">
+
+            <!-- Filters -->
+            <div style="display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap;">
+                <label
+                    style="display: flex; align-items: center; gap: 4px; color: #cbd5e1; font-size: 0.8rem; cursor: pointer;">
+                    <input type="checkbox" [(ngModel)]="filterBase"> Base
+                </label>
+                <label
+                    style="display: flex; align-items: center; gap: 4px; color: #cbd5e1; font-size: 0.8rem; cursor: pointer;">
+                    <input type="checkbox" [(ngModel)]="filterPok"> PoK
+                </label>
+                <label
+                    style="display: flex; align-items: center; gap: 4px; color: #cbd5e1; font-size: 0.8rem; cursor: pointer;">
+                    <input type="checkbox" [(ngModel)]="filterExtras"> TE (Extras)
+                </label>
+                <div style="width: 1px; background: #334155; margin: 0 4px;"></div>
+                <label
+                    style="display: flex; align-items: center; gap: 4px; color: #cbd5e1; font-size: 0.8rem; cursor: pointer;">
+                    <input type="checkbox" [(ngModel)]="filterHome"> Home Only
+                </label>
+                <label
+                    style="display: flex; align-items: center; gap: 4px; color: #cbd5e1; font-size: 0.8rem; cursor: pointer;">
+                    <input type="checkbox" [(ngModel)]="filterAnomaliesOnly"> Anomalies Only
+                </label>
+            </div>
+        </div>
+
+        <div
+            style="padding: 1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 0.5rem; overflow-y: auto;">
+            <div *ngFor="let tid of filteredTiles" (click)="selectTileForPending(tid)"
+                style="aspect-ratio: 1; cursor: pointer; background: black; border-radius: 0.25rem; border: 1px solid #334155; position: relative; transition: all 0.2s;"
+                class="hover-tile">
+
+                <img [src]="getTileUrl(tid)" style="width: 100%; height: 100%; object-fit: contain;">
+                <span
+                    style="position: absolute; bottom: 0; right: 0; background: rgba(0,0,0,0.7); font-size: 0.625rem; color: white; padding: 1px 2px; border-top-left-radius: 0.25rem;">{{tid}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showMapLoadModal"
+    style="position: fixed; inset: 0; z-index: 10000; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px);">
+    <div
+        style="background: #1e293b; border: 1px solid #475569; border-radius: 0.5rem; max-width: 600px; width: 90%; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column;">
+        <div
+            style="padding: 1rem; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; background: #0f172a;">
+            <h3 style="margin: 0; color: white; font-size: 1rem; font-weight: bold;">Load Map</h3>
+            <button (click)="showMapLoadModal = false"
+                style="background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.25rem;">&times;</button>
+        </div>
+        <div style="padding: 1rem; overflow-y: auto;">
+            <div *ngIf="availableMaps.length === 0" style="color: #94a3b8; text-align: center;">No saved maps
+                found.
+            </div>
+            <div *ngFor="let map of availableMaps"
+                style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; border-bottom: 1px solid #334155;">
+                <div style="flex: 1;">
+                    <div style="color: #e2e8f0; font-weight: 500; font-size: 1rem;">{{ map.name }}</div>
+                    <div style="color: #94a3b8; font-size: 0.75rem;">
+                        {{ map.playerCount }} Players • {{ map.timestamp | date:'short' }} • {{map.factionId}}
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button (click)="loadSavedMap(map)"
+                        style="padding: 6px 12px; background: #3b82f6; color: white; border: none; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Load</button>
+                    <button (click)="deleteSavedMap(map.id)"
+                        style="padding: 6px 12px; background: #dc2626; color: white; border: none; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

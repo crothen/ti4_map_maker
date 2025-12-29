@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9955;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E65C00;stop-opacity:1" />
+    </linearGradient>
+    <style>
+      .base { fill: #FF7F2A; }
+      .shadow { fill: #CC5200; }
+      .dark-shadow { fill: #993300; }
+      .highlight { fill: #FFAA66; }
+      .deep { fill: #662200; }
+    </style>
+  </defs>
+
+  <g transform="translate(420, 180)">
+    <path d="M0,20 L60,-10 L80,20 L20,60 Z" class="shadow" />
+    <path d="M40,30 L140,-20 L160,10 L60,70 Z" class="base" />
+    <path d="M40,30 L140,-20 L130,-25 L50,15 Z" class="highlight" />
+    <path d="M140,-20 L150,-25 L170,5 L160,10 Z" class="shadow" />
+    <ellipse cx="160" cy="-5" rx="10" ry="15" transform="rotate(-25)" class="dark-shadow" />
+  </g>
+
+  <g transform="translate(250, 200)">
+    <path d="M30,120 L100,160 L180,120 L120,80 Z" class="shadow" />
+    
+    <path d="M50,80 L200,20 L260,60 L120,130 Z" class="base" />
+    
+    <path d="M80,70 L210,20 L240,50 L110,100 Z" class="highlight" />
+    
+    <path d="M120,85 L200,55 L220,65 L140,95 Z" fill="#E65C00" />
+    <path d="M130,80 L140,76" stroke="#CC5200" stroke-width="2"/>
+    <path d="M150,72 L160,68" stroke="#CC5200" stroke-width="2"/>
+    <path d="M170,64 L180,60" stroke="#CC5200" stroke-width="2"/>
+
+    <path d="M30,120 L70,140 L70,170 L30,150 Z" class="base" />
+    <ellipse cx="50" cy="145" rx="20" ry="15" transform="rotate(30)" class="deep" />
+    
+    <path d="M100,160 L140,140 L140,110 L100,130 Z" class="shadow" />
+    <ellipse cx="120" cy="135" rx="15" ry="10" transform="rotate(30)" class="deep" />
+  </g>
+
+  <g transform="translate(150, 250)">
+    <path d="M150,-20 L220,20 L180,60 L100,10 Z" class="shadow" />
+    
+    <path d="M60,60 L160,20 L180,50 L80,100 Z" class="base" />
+    
+    <path d="M60,60 L160,20 L150,15 L50,55 Z" class="highlight" />
+    
+    <ellipse cx="70" cy="80" rx="25" ry="20" transform="rotate(-25)" class="base" />
+    <ellipse cx="70" cy="80" rx="15" ry="10" transform="rotate(-25)" class="deep" />
+    
+    <path d="M160,20 L170,15 L190,45 L180,50 Z" class="shadow" />
+  </g>
+</svg>

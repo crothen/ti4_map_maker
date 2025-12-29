@@ -1,0 +1,2278 @@
+[
+    {
+        "id": "01",
+        "name": "Jord",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "Jord",
+                "resources": 4,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "02",
+        "name": "Moll Primus",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "Moll Primus",
+                "resources": 4,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "03",
+        "name": "Darien",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "Darien",
+                "resources": 4,
+                "influence": 4,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "04",
+        "name": "Muaat",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "Muaat",
+                "resources": 4,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "05",
+        "name": "Nestphar",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "Nestphar",
+                "resources": 3,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "06",
+        "name": "[0.0.0]",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "[0.0.0]",
+                "resources": 5,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "07",
+        "name": "Winnu",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "Winnu",
+                "resources": 3,
+                "influence": 4,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "08",
+        "name": "Mordai II",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "Mordai II",
+                "resources": 4,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "09",
+        "name": "Maaluuk / Druaa",
+        "type": "Home",
+        "isHomeSystem": true,
+        "planets": [
+            {
+                "name": "Maaluuk",
+                "resources": 0,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Druaa",
+                "resources": 3,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "10",
+        "name": "Arc Prime / Wren Terra",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Arc Prime",
+                "resources": 4,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Wren Terra",
+                "resources": 2,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Barony of Letnev"
+    },
+    {
+        "id": "11",
+        "name": "Lisis II / Ragh",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Lisis II",
+                "resources": 1,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Ragh",
+                "resources": 2,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Clan of Saar"
+    },
+    {
+        "id": "12",
+        "name": "Nar / Jol",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Nar",
+                "resources": 2,
+                "influence": 3,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Jol",
+                "resources": 1,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Universities of Jol-Nar"
+    },
+    {
+        "id": "13",
+        "name": "Tren'Lak / Quinarra",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Tren'Lak",
+                "resources": 1,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Quinarra",
+                "resources": 3,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Sardakk N'orr"
+    },
+    {
+        "id": "14",
+        "name": "Archon Ren",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Archon Ren",
+                "resources": 2,
+                "influence": 3,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Xxcha Kingdom"
+    },
+    {
+        "id": "15",
+        "name": "Retillion / Shalloq",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Retillion",
+                "resources": 2,
+                "influence": 3,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Shalloq",
+                "resources": 2,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Yssaril Tribes"
+    },
+    {
+        "id": "16",
+        "name": "Arretze / Hercant",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Arretze",
+                "resources": 2,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Hercant",
+                "resources": 1,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Emirates of Hacan"
+    },
+    {
+        "id": "17",
+        "name": "Creuss",
+        "type": "Home",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": "Delta",
+        "isHomeSystem": true,
+        "faction": "The Ghosts of Creuss"
+    },
+    {
+        "id": "18",
+        "name": "Mecatol Rex",
+        "type": "Mecatol",
+        "planets": [
+            {
+                "name": "Mecatol Rex",
+                "resources": 1,
+                "influence": 6,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "19",
+        "name": "Wellon",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Wellon",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Industrial",
+                "tech": "cybernetic"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "20",
+        "name": "Vefut II",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Vefut II",
+                "resources": 2,
+                "influence": 2,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "21",
+        "name": "Thibah",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Thibah",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "propulsion"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "22",
+        "name": "Tar'Mann",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Tar'Mann",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "biotic"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "23",
+        "name": "Saudor",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Saudor",
+                "resources": 2,
+                "influence": 2,
+                "trait": "Industrial",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "24",
+        "name": "Mehar Xull",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Mehar Xull",
+                "resources": 1,
+                "influence": 3,
+                "trait": "Hazardous",
+                "tech": "warfare"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "25",
+        "name": "Quann",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Quann",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": "Beta"
+    },
+    {
+        "id": "26",
+        "name": "Lodor",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Lodor",
+                "resources": 3,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": "Alpha"
+    },
+    {
+        "id": "27",
+        "name": "New Albion / Starpoint",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "New Albion",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "biotic"
+            },
+            {
+                "name": "Starpoint",
+                "resources": 3,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "28",
+        "name": "Tequ'ran / Torkan",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Tequ'ran",
+                "resources": 2,
+                "influence": 0,
+                "trait": "Hazardous",
+                "tech": null
+            },
+            {
+                "name": "Torkan",
+                "resources": 0,
+                "influence": 3,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "29",
+        "name": "Qucen'n / Rarron",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Qucen'n",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Industrial",
+                "tech": null
+            },
+            {
+                "name": "Rarron",
+                "resources": 0,
+                "influence": 3,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "30",
+        "name": "Mellon / Zohbat",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Mellon",
+                "resources": 0,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Zohbat",
+                "resources": 3,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "31",
+        "name": "Lazar / Sakulag",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Lazar",
+                "resources": 1,
+                "influence": 0,
+                "trait": "Industrial",
+                "tech": "cybernetic"
+            },
+            {
+                "name": "Sakulag",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "32",
+        "name": "Dal Bootha / Xxehan",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Dal Bootha",
+                "resources": 0,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Xxehan",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "33",
+        "name": "Coorneeq / Resculon",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Coorneeq",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Resculon",
+                "resources": 2,
+                "influence": 0,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "34",
+        "name": "Centauri / Gral",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Centauri",
+                "resources": 1,
+                "influence": 3,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Gral",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "propulsion"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "35",
+        "name": "Bereg / Lirta IV",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Bereg",
+                "resources": 3,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            },
+            {
+                "name": "Lirta IV",
+                "resources": 2,
+                "influence": 3,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "36",
+        "name": "Arnor / Lor",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Arnor",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": null
+            },
+            {
+                "name": "Lor",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Industrial",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "37",
+        "name": "Arinam / Meer",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Arinam",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Industrial",
+                "tech": null
+            },
+            {
+                "name": "Meer",
+                "resources": 0,
+                "influence": 4,
+                "trait": "Hazardous",
+                "tech": "warfare"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "38",
+        "name": "Abyz / Fria",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Abyz",
+                "resources": 3,
+                "influence": 0,
+                "trait": "Hazardous",
+                "tech": null
+            },
+            {
+                "name": "Fria",
+                "resources": 2,
+                "influence": 0,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "39",
+        "name": "Wormhole Alpha",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": "Alpha"
+    },
+    {
+        "id": "40",
+        "name": "Wormhole Beta",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": "Beta"
+    },
+    {
+        "id": "41",
+        "name": "Gravity Rift",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Gravity Rift"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "42",
+        "name": "Nebula",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Nebula"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "43",
+        "name": "Supernova",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Supernova"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "44",
+        "name": "Asteroid Field",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Asteroid Field"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "45",
+        "name": "Asteroid Field",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Asteroid Field"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "46",
+        "name": "Empty",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "47",
+        "name": "Empty",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "48",
+        "name": "Empty",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "49",
+        "name": "Empty",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "50",
+        "name": "Empty",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "51",
+        "name": "Creuss",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Creuss",
+                "resources": 4,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": "Delta",
+        "isHomeSystem": true,
+        "faction": "The Ghosts of Creuss"
+    },
+    {
+        "id": "52",
+        "name": "Ixth",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Ixth",
+                "resources": 3,
+                "influence": 5,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Mahact Gene-Sorcerers"
+    },
+    {
+        "id": "53",
+        "name": "Arcturus",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Arcturus",
+                "resources": 4,
+                "influence": 4,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Nomad"
+    },
+    {
+        "id": "54",
+        "name": "Acheron",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Acheron",
+                "resources": 4,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Vuil'Raith Cabal"
+    },
+    {
+        "id": "55",
+        "name": "Elysium",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Elysium",
+                "resources": 4,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Titans of Ul"
+    },
+    {
+        "id": "56",
+        "name": "The Dark",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "The Dark",
+                "resources": 3,
+                "influence": 4,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [
+            "Nebula"
+        ],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Empyrean"
+    },
+    {
+        "id": "57",
+        "name": "Naaz / Rokha",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Naaz",
+                "resources": 2,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Rokha",
+                "resources": 1,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Naaz-Rokha Alliance"
+    },
+    {
+        "id": "58",
+        "name": "Valk / Yur / Avar",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Valk",
+                "resources": 2,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Yur",
+                "resources": 0,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Avar",
+                "resources": 1,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Argent Flight"
+    },
+    {
+        "id": "59",
+        "name": "Archon Vail",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Archon Vail",
+                "resources": 1,
+                "influence": 3,
+                "trait": "Hazardous",
+                "tech": "propulsion"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "60",
+        "name": "Perimeter",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Perimeter",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "61",
+        "name": "Ang",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Ang",
+                "resources": 2,
+                "influence": 0,
+                "trait": "Industrial",
+                "tech": "warfare"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "62",
+        "name": "Sem-Lore",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Sem-Lore",
+                "resources": 3,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": "cybernetic"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "63",
+        "name": "Vorhal",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Vorhal",
+                "resources": 0,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": "biotic"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "64",
+        "name": "Atlas",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Atlas",
+                "resources": 3,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": "Beta"
+    },
+    {
+        "id": "65",
+        "name": "Primor",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Primor",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": null,
+                "legendaryAbility": {
+                    "title": "Scepter of Emelpar",
+                    "text": "You may exhaust this card at the end of your turn to place up to 2 infantry from your reinforcements on any planet you control."
+                }
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "66",
+        "name": "Hope's End",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Hope's End",
+                "resources": 3,
+                "influence": 0,
+                "trait": "Hazardous",
+                "tech": null,
+                "legendaryAbility": {
+                    "title": "Imperial Arms Vault",
+                    "text": "You may exhaust this card at the end of your turn to place 1 mech from your reinforcements on any planet you control, or draw 1 action card."
+                }
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "67",
+        "name": "Cormund",
+        "type": "Red",
+        "planets": [
+            {
+                "name": "Cormund",
+                "resources": 2,
+                "influence": 0,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [
+            "Gravity Rift"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "68",
+        "name": "Everra",
+        "type": "Red",
+        "planets": [
+            {
+                "name": "Everra",
+                "resources": 3,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [
+            "Nebula"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "69",
+        "name": "Accoen / Joel Ir",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Accoen",
+                "resources": 2,
+                "influence": 3,
+                "trait": "Industrial",
+                "tech": null
+            },
+            {
+                "name": "Joel Ir",
+                "resources": 2,
+                "influence": 3,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "70",
+        "name": "Kraag / Siig",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Kraag",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            },
+            {
+                "name": "Siig",
+                "resources": 0,
+                "influence": 2,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "71",
+        "name": "Ba'kal / Alio Prima",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Ba'kal",
+                "resources": 3,
+                "influence": 2,
+                "trait": "Industrial",
+                "tech": null
+            },
+            {
+                "name": "Alio Prima",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "72",
+        "name": "Lisis / Velnor",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Lisis",
+                "resources": 2,
+                "influence": 2,
+                "trait": "Industrial",
+                "tech": null
+            },
+            {
+                "name": "Velnor",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "warfare"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "73",
+        "name": "Cealdri / Xanhact",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Cealdri",
+                "resources": 0,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": "cybernetic"
+            },
+            {
+                "name": "Xanhact",
+                "resources": 0,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "74",
+        "name": "Vega Major / Vega Minor",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Vega Major",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Vega Minor",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": "propulsion"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "75",
+        "name": "Abaddon / Loki / Ashtroth",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Abaddon",
+                "resources": 1,
+                "influence": 0,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Loki",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Ashtroth",
+                "resources": 2,
+                "influence": 0,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "76",
+        "name": "Rigel I / Rigel II / Rigel III",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Rigel I",
+                "resources": 0,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            },
+            {
+                "name": "Rigel II",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Industrial",
+                "tech": null
+            },
+            {
+                "name": "Rigel III",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "biotic"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "77",
+        "name": "Empty",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "78",
+        "name": "Empty",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "79",
+        "name": "Asteroid Field Alpha",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Asteroid Field"
+        ],
+        "wormhole": "Alpha"
+    },
+    {
+        "id": "80",
+        "name": "Supernova",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Supernova"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "81",
+        "name": "Muaat Supernova",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Muaat Supernova"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "82",
+        "name": "Mallice",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Mallice",
+                "resources": 0,
+                "influence": 3,
+                "trait": "Cultural",
+                "tech": null,
+                "legendaryAbility": {
+                    "title": "Exterrix Headquarters",
+                    "text": "You may exhaust this card at the end of your turn to gain 2 trade goods or convert all of your commodities into trade goods."
+                }
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "83a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "83b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "84a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "84b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "85a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "85b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "86a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "86b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "87a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "87b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "88a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "88b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "89a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "89b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "90a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "90b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "91a",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "91b",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "92",
+        "name": "Ordinian / Revelation",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Ordinian",
+                "resources": 0,
+                "influence": 0,
+                "trait": "-",
+                "tech": null,
+                "legendaryAbility": {
+                    "title": "Last Bastion",
+                    "text": "You may exhaust this card when you pass to draw 1 action card and gain 1 command token."
+                }
+            },
+            {
+                "name": "Revelation",
+                "resources": 1,
+                "influence": 2,
+                "trait": "SpaceStationIcon",
+                "tech": null
+            }
+        ],
+        "anomalies": [
+            "Nebula"
+        ],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "The Council Keleres"
+    },
+    {
+        "id": "93",
+        "name": "Mez Lo Orz Pei Zsha / Rep Lo Orz Oet",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Mez Lo Orz Pei Zsha",
+                "resources": 2,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Rep Lo Orz Oet",
+                "resources": 1,
+                "influence": 3,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Ral Nel"
+    },
+    {
+        "id": "94",
+        "name": "The Dark",
+        "type": "Home",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": "Epsilon"
+    },
+    {
+        "id": "95",
+        "name": "Ikatena",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Ikatena",
+                "resources": 4,
+                "influence": 4,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Deepwrought"
+    },
+    {
+        "id": "96A",
+        "name": "Cronos / Tallin",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Cronos",
+                "resources": 2,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Tallin",
+                "resources": 1,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Firmament"
+    },
+    {
+        "id": "96B",
+        "name": "Cronos Hollow / Tallin Hollow",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Cronos Hollow",
+                "resources": 3,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Tallin Hollow",
+                "resources": 3,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null,
+        "isHomeSystem": true,
+        "faction": "Obsidian"
+    },
+    {
+        "id": "97",
+        "name": "Faunus",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Faunus",
+                "resources": 1,
+                "influence": 3,
+                "trait": "Industrial",
+                "tech": "biotic",
+                "legendaryAbility": {
+                    "title": "Maxis Central Control",
+                    "text": "You may exhaust this card when you pass to gain control of a non-home, non-legendary planet that contains no units and has no attachments."
+                }
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "98",
+        "name": "Garbozia",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Garbozia",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null,
+                "legendaryAbility": {
+                    "title": "Dok 'N Pic's Salvage Yard",
+                    "text": "You may exhaust this card when you pass to place 1 action card from the discard pile faceup on this card; you can purge cards on this card to play them as if they were in your hand."
+                }
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "99",
+        "name": "Emelpar",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Emelpar",
+                "resources": 0,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null,
+                "legendaryAbility": {
+                    "title": "The Acropolis",
+                    "text": "You may exhaust this card at the end of your turn to ready another component that isn't a strategy card."
+                }
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "100",
+        "name": "Tempesta",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Tempesta",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": "propulsion",
+                "legendaryAbility": {
+                    "title": "Ionian Fuel Refinery",
+                    "text": "You may exhaust this card after you activate a system to apply +1 to the move value of 1 of your ships during this tactical action."
+                }
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "101",
+        "name": "Olergodt",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Olergodt",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": "cybernetic"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "102",
+        "name": "Andeara",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Andeara",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "propulsion"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": "Alpha"
+    },
+    {
+        "id": "103",
+        "name": "Vira-Pics III",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Vira-Pics III",
+                "resources": 2,
+                "influence": 3,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "104",
+        "name": "Lesab",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Lesab",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "105",
+        "name": "New Terra / Tinnes",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "New Terra",
+                "resources": 1,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "biotic"
+            },
+            {
+                "name": "Tinnes",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Industrial",
+                "tech": "biotic"
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "106",
+        "name": "Cresius / Lazul Rex",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Cresius",
+                "resources": 0,
+                "influence": 1,
+                "trait": "Hazardous",
+                "tech": null
+            },
+            {
+                "name": "Lazul Rex",
+                "resources": 2,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "107",
+        "name": "Tiamat / Hercalor",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Tiamat",
+                "resources": 2,
+                "influence": 1,
+                "trait": "Cultural",
+                "tech": "cybernetic"
+            },
+            {
+                "name": "Hercalor",
+                "resources": 1,
+                "influence": 0,
+                "trait": "Industrial",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "108",
+        "name": "Kosboth / Capha",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Kosboth",
+                "resources": 0,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            },
+            {
+                "name": "Capha",
+                "resources": 3,
+                "influence": 0,
+                "trait": "Hazardous",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "109",
+        "name": "Bellatrix / Tsion Station",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Bellatrix",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Tsion Station",
+                "resources": 1,
+                "influence": 1,
+                "trait": "SpaceStationIcon",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "110",
+        "name": "Horizon / Elnath",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Horizon",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Elnath",
+                "resources": 2,
+                "influence": 0,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "111",
+        "name": "Tarana / Oluz Station",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Tarana",
+                "resources": 1,
+                "influence": 2,
+                "trait": "Cultural",
+                "tech": null
+            },
+            {
+                "name": "Oluz Station",
+                "resources": 1,
+                "influence": 1,
+                "trait": "SpaceStationIcon",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "112",
+        "name": "Mecatol Rex",
+        "type": "Mecatol",
+        "planets": [
+            {
+                "name": "Mecatol Rex",
+                "resources": 1,
+                "influence": 6,
+                "trait": "-",
+                "tech": null,
+                "legendaryAbility": {
+                    "title": "The Galactic Council",
+                    "text": "You may exhaust this card and discard 1 secret objective at the end of your turn to draw 1 secret objective."
+                }
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "113",
+        "name": "Gravity Rift Beta",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Gravity Rift"
+        ],
+        "wormhole": "Beta"
+    },
+    {
+        "id": "114",
+        "name": "Entropic Scar",
+        "type": "Red",
+        "planets": [],
+        "anomalies": [
+            "Entropic Scar"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "115",
+        "name": "Industrex",
+        "type": "Red",
+        "planets": [
+            {
+                "name": "Industrex",
+                "resources": 2,
+                "influence": 0,
+                "trait": "Industrial",
+                "tech": "warfare",
+                "legendaryAbility": {
+                    "title": "Aeurex Mechanica",
+                    "text": "You may exhaust this card at the end of your turn to perform 1 action."
+                }
+            }
+        ],
+        "anomalies": [
+            "Asteroid Field"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "116",
+        "name": "Lemox",
+        "type": "Red",
+        "planets": [
+            {
+                "name": "Lemox",
+                "resources": 0,
+                "influence": 3,
+                "trait": "Industrial",
+                "tech": null
+            }
+        ],
+        "anomalies": [
+            "Entropic Scar"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "117",
+        "name": "The Watchtower",
+        "type": "Red",
+        "planets": [
+            {
+                "name": "The Watchtower",
+                "resources": 1,
+                "influence": 1,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [
+            "Gravity Rift",
+            "Asteroid Field"
+        ],
+        "wormhole": null
+    },
+    {
+        "id": "118",
+        "name": "Ahk Creuxx",
+        "type": "Home",
+        "planets": [
+            {
+                "name": "Ahk Creuxx",
+                "resources": 4,
+                "influence": 2,
+                "trait": "-",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": "Epsilon",
+        "isHomeSystem": true,
+        "faction": "The Crimson Rebellion"
+    },
+    {
+        "id": "119A",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "119B",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "120A",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "121A",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "122A",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "123A",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "124A",
+        "name": "Hyperlane",
+        "type": "Hyperlane",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "125",
+        "name": "Cocytus",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Cocytus",
+                "resources": 3,
+                "influence": 0,
+                "trait": "RelicSymbol",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "126",
+        "name": "Lethe / Phlegethon",
+        "type": "Blue",
+        "planets": [
+            {
+                "name": "Lethe",
+                "resources": 0,
+                "influence": 2,
+                "trait": "RelicSymbol",
+                "tech": null
+            },
+            {
+                "name": "Phlegethon",
+                "resources": 1,
+                "influence": 2,
+                "trait": "RelicSymbol",
+                "tech": null
+            }
+        ],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "127",
+        "name": "Fracture",
+        "type": "Blue",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    },
+    {
+        "id": "128",
+        "name": "Empty",
+        "type": "Blue",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
+    }
+]
