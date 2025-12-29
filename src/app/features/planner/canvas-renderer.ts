@@ -12,6 +12,8 @@ export class HexRenderer {
     private isDragging = false;
     private lastMouseX = 0;
     private lastMouseY = 0;
+    private lastTouchX = 0;
+    private lastTouchY = 0;
     private dragStartX = 0;
     private dragStartY = 0;
     private hoveredHex: { q: number, r: number } | null = null;
@@ -82,6 +84,12 @@ export class HexRenderer {
     private mouseUpHandler: (e: MouseEvent) => void = () => { };
     private contextMenuHandler: (e: MouseEvent) => void = () => { };
 
+    // Touch Handlers
+    private touchStartHandler: (e: TouchEvent) => void = () => { };
+    private touchMoveHandler: (e: TouchEvent) => void = () => { };
+    private touchEndHandler: (e: TouchEvent) => void = () => { };
+    private lastTouchDist = 0;
+
     private setupEvents() {
         // Zoom
         this.wheelHandler = (e: WheelEvent) => {
@@ -92,7 +100,7 @@ export class HexRenderer {
             this.scale = newScale;
             this.draw();
         };
-        this.canvas.addEventListener('wheel', this.wheelHandler);
+        this.canvas.addEventListener('wheel', this.wheelHandler, { passive: false });
 
         // Pan
         this.mouseDownHandler = (e: MouseEvent) => {
@@ -163,6 +171,91 @@ export class HexRenderer {
             e.preventDefault(); // Block default browser menu
         };
         this.canvas.addEventListener('contextmenu', this.contextMenuHandler);
+
+        // --- Touch Implementation ---
+        this.touchStartHandler = (e: TouchEvent) => {
+            e.preventDefault();
+            if (e.touches.length === 1) {
+                // Single touch pan
+                const touch = e.touches[0];
+                this.lastTouchX = touch.clientX;
+                this.lastTouchY = touch.clientY;
+                this.dragStartX = touch.clientX;
+                this.dragStartY = touch.clientY;
+                this.isDragging = false;
+                this.isMouseDown = true; // reusing bool for "interacting"
+            } else if (e.touches.length === 2) {
+                // Pinch start
+                const t1 = e.touches[0];
+                const t2 = e.touches[1];
+                this.lastTouchDist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+                this.isDragging = true; // Assume drag/zoom immediately
+            }
+        };
+        this.canvas.addEventListener('touchstart', this.touchStartHandler, { passive: false });
+
+        this.touchMoveHandler = (e: TouchEvent) => {
+            e.preventDefault();
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                const dx = touch.clientX - this.lastTouchX;
+                const dy = touch.clientY - this.lastTouchY;
+
+                if (!this.isDragging && (Math.abs(touch.clientX - this.dragStartX) > 5 || Math.abs(touch.clientY - this.dragStartY) > 5)) {
+                    this.isDragging = true;
+                }
+
+                if (this.isDragging) {
+                    this.offsetX += dx;
+                    this.offsetY += dy;
+                    this.draw();
+                }
+                this.lastTouchX = touch.clientX;
+                this.lastTouchY = touch.clientY;
+
+            } else if (e.touches.length === 2) {
+                const t1 = e.touches[0];
+                const t2 = e.touches[1];
+
+                // Calculate new distance
+                const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+
+                // Zoom
+                if (this.lastTouchDist > 0) {
+                    const delta = dist - this.lastTouchDist;
+                    const zoomSensitivity = 0.005;
+                    const newScale = Math.min(Math.max(0.1, this.scale + delta * zoomSensitivity), 3);
+                    this.scale = newScale;
+                }
+                this.lastTouchDist = dist;
+
+                // Pan (midpoint move) could be added here, but keep simple for now
+                this.draw();
+            }
+        };
+        this.canvas.addEventListener('touchmove', this.touchMoveHandler, { passive: false });
+
+        this.touchEndHandler = (e: TouchEvent) => {
+            e.preventDefault();
+            // If interaction ended and it wasn't a drag, it's a click
+            if (!this.isDragging && this.isMouseDown && e.changedTouches.length > 0) {
+                const touch = e.changedTouches[0];
+                const rect = this.canvas.getBoundingClientRect();
+                // Update hover check one last time for the tap location
+                this.checkHover(touch.clientX - rect.left, touch.clientY - rect.top);
+
+                if (this.hoveredHex) {
+                    const tile = this.tiles.find(t => t.q === this.hoveredHex!.q && t.r === this.hoveredHex!.r);
+                    if (tile && this.onHexClick) {
+                        this.onHexClick(tile);
+                    }
+                }
+            }
+
+            this.isMouseDown = false;
+            this.isDragging = false;
+        };
+        this.canvas.addEventListener('touchend', this.touchEndHandler);
     }
 
     public dispose() {
@@ -171,6 +264,10 @@ export class HexRenderer {
         window.removeEventListener('mousemove', this.mouseMoveHandler);
         window.removeEventListener('mouseup', this.mouseUpHandler);
         this.canvas.removeEventListener('contextmenu', this.contextMenuHandler);
+
+        this.canvas.removeEventListener('touchstart', this.touchStartHandler);
+        this.canvas.removeEventListener('touchmove', this.touchMoveHandler);
+        this.canvas.removeEventListener('touchend', this.touchEndHandler);
     }
 
     private checkHover(mouseX: number, mouseY: number) {
