@@ -10,7 +10,7 @@
             </div>
         </header>
         <div class="main-content">
-            <div class="map-container" #mapContainer>
+            <div class="map-container" #mapContainer [class.mobile-hidden]="mobileSidebarState === 'expanded'">
                 <canvas #mapCanvas class="map-canvas"></canvas>
                 <!-- Floating Toggle for Tile IDs -->
                 <button (click)="toggleTileIds()"
@@ -34,7 +34,29 @@
                 </div>
             </div>
 
-            <div class="sidebar">
+            <div class="sidebar" [class.mobile-expanded]="mobileSidebarState === 'expanded'"
+                [class.mobile-minimized]="mobileSidebarState === 'minimized'">
+
+                <!-- Mobile Resize Handle -->
+                <div class="mobile-resize-handle">
+                    <button (click)="setSidebarState('minimized')" [disabled]="mobileSidebarState === 'minimized'"
+                        style="background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 4px; width: 30px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        <span style="font-size: 10px;">▼</span>
+                    </button>
+                    <div
+                        style="flex: 1; text-align: center; color: #64748b; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase;">
+                        Details
+                    </div>
+                    <button (click)="setSidebarState('expanded')" *ngIf="mobileSidebarState !== 'expanded'"
+                        style="background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 4px; width: 30px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        <span style="font-size: 10px;">▲</span>
+                    </button>
+                    <button (click)="setSidebarState('default')" *ngIf="mobileSidebarState === 'expanded'"
+                        style="background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 4px; width: 30px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        <span style="font-size: 10px;">▼</span>
+                    </button>
+                </div>
+
                 <!-- Public Map Info (ReadOnly) -->
                 <div *ngIf="(authService.user$ | async) === null"
                     style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #334155;">
@@ -153,7 +175,7 @@
                 </div>
 
                 <!-- System Details Panel (When Hex Selected) -->
-                <div *ngIf="selectedHex && !isShapeEditMode"
+                <div *ngIf="selectedHex && !isShapeEditMode" class="mobile-selected-system"
                     style="margin-bottom: 1.5rem; padding: 1rem; background: #1e293b; border-radius: 0.25rem; border: 1px solid #334155;">
                     <h3
                         style="font-size: 1rem; font-weight: bold; color: #60a5fa; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; margin-top: 0;">

@@ -64,6 +64,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
   showTileIds = false;
   usedTileIds: string[] = [];
   isMenuOpen = false;
+  mobileSidebarState: 'minimized' | 'default' | 'expanded' = 'default';
   // List of ACTIVE index positions in the spiral grid. 
   // If empty, we default to standard full grid.
   mapShape: number[] = [];
@@ -273,6 +274,10 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
       this.renderer.showTileIds = this.showTileIds;
       this.renderer.draw();
     }
+  }
+
+  setSidebarState(state: 'minimized' | 'default' | 'expanded') {
+    this.mobileSidebarState = state;
   }
 
   exportShape() {
