@@ -1,6 +1,8 @@
 :host {
   display: block;
   height: 100vh;
+  height: 100dvh;
+  /* Mobile friendly viewport height */
   display: flex;
   flex-direction: column;
   background-color: #0f172a;
@@ -292,4 +294,59 @@ h2 {
 
 .map-list-btn:hover {
   background: #334155;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 40vh;
+    /* Bottom part of screen */
+    border-left: none;
+    border-top: 1px solid #334155;
+  }
+
+  .map-container {
+    height: 60vh;
+    /* Top part of screen */
+    flex: none;
+    /* Disable flex grow to enforce height */
+  }
+
+  /* Adjust Header */
+  header {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Adjust Drawer behaviors */
+  .side-drawer {
+    width: 80vw;
+    /* Take mostly full width but leave a gap */
+    right: -80vw;
+  }
+
+  .drawer-layout.menu-open .page-content {
+    transform: translateX(-80vw);
+  }
+
+  .drawer-layout.menu-open .side-drawer {
+    right: 0;
+  }
+
+  .map-input {
+    width: 150px;
+    /* Smaller input on mobile */
+  }
 }
