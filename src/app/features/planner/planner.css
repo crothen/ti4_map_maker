@@ -297,23 +297,30 @@ h2 {
 }
 
 /* Mobile Responsive Styles */
-/* Mobile Resize Handle */
-.mobile-resize-handle {
+/* Mobile Expand Button */
+.mobile-expand-btn {
   display: none;
 }
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .mobile-resize-handle {
+  .mobile-expand-btn {
     display: flex;
-    padding: 6px 1rem;
-    background: #0f172a;
-    border-bottom: 1px solid #334155;
-    gap: 1rem;
+    justify-content: center;
     align-items: center;
-    order: -10;
-    /* Ensure it's at the top */
-    flex-shrink: 0;
+    position: absolute;
+    top: -30px;
+    right: 16px;
+    width: 40px;
+    height: 30px;
+    background: #1e293b;
+    border: 1px solid #475569;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    color: #60a5fa;
+    cursor: pointer;
+    z-index: 60;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3);
   }
 
   .main-content {
@@ -322,26 +329,92 @@ h2 {
 
   .sidebar {
     width: 100%;
-    /* Default State: 40% height approx */
-    height: 40vh;
+    /* Default Minimized */
+    height: 60px;
     flex: none;
     border-left: none;
     border-top: 1px solid #334155;
     display: flex;
     flex-direction: column;
-    transition: height 0.3s ease, flex 0.3s ease;
-    overflow: hidden;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: #1e293b;
+    z-index: 40;
   }
 
   /* States */
   .sidebar.mobile-minimized {
-    height: 44px;
-    /* Handle height only */
+    height: 60px;
+    overflow: visible;
+    /* Allow button to stick out top */
   }
+
+  /* Hide content that is NOT the header in minimized mode? 
+     Actually, if height is 60px, content below is cut off if we have background? 
+     Wait, overflow visible means content shows.
+     We need overflow: hidden for CONTENT, but explicit visible for Button?
+     Can't do both on same element.
+     
+     Hack: Button is child. We set sidebar overflow hidden.
+     We set button position fixed? No.
+     
+     Let's stick with: Sidebar overflow hidden. Button is inside, top right.
+     We just make the button appear "overlapping" by adding padding-top to sidebar and pulling button up?
+     Or just placing button at top inside (y=0) and sidebar has no border-top?
+     User said "overlaps the map".
+     
+     If I set `.sidebar { margin-top: -20px; padding-top: 20px; }`?
+     Then map is covered by 20px transparent sidebar. Button is there.
+     
+     Let's try: `margin-top: -30px;` on sidebar.
+     And `background-clip`?
+     
+     Simpler: 
+     Sidebar height includes the button area?
+     No, let's keep it simple.
+     Button is inside Sidebar. Top 0.
+     Sidebar border-top is ... below button?
+     
+     Let's just position button at `top: 0` right `0`.
+     And map is above.
+     If user wants "overlap", maybe they mean visual overlap.
+     If I use negative margin on Sidebar, it effectively pulls it up.
+     
+     Let's style the button to look like a tab sticking up.
+     `top: -30px`.
+     `sidebar.mobile-minimized { overflow: visible; }`.
+     The CONTENT of the sidebar (the long list) will flow down off screen.
+     User won't see it because it's "below fold".
+     Unless user scrolls BODY? Layout is `height: 100dvh; overflow: hidden;`.
+     So content flowing off screen is invisible. Safe!
+  */
 
   .sidebar.mobile-expanded {
     flex: 1;
     height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* When expanded, the button should probably move? 
+     User said "down arrow is just like X".
+     If expaned, button at top-right (inside header) is fine.
+     If we keep `top: -30px`, it floats above header?
+     In expanded mode (full screen), `top: -30px` is off screen top!
+     
+     So in `.sidebar.mobile-expanded .mobile-expand-btn` we need `top: 10px; right: 10px; border-radius: 4px; border-bottom: 1px solid...`.
+     Transition generic `top`.
+  */
+
+  .sidebar.mobile-expanded .mobile-expand-btn {
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #475569;
+    background: rgba(15, 23, 42, 0.9);
+    color: white;
   }
 
   /* Reorder Selected System to top on mobile */
@@ -352,20 +425,19 @@ h2 {
     border-right: none !important;
     margin-bottom: 0 !important;
     background: #1e293b !important;
+    padding-top: 0.5rem !important;
+    /* Make room for content */
   }
 
   .map-container {
     flex: 1;
-    /* Take remaining space */
     order: 0;
   }
 
-  /* When Sidebar is expanded, Map should be hidden or zero height. 
-     We can't select previous sibling with CSS alone easily without a parent class.
-     So we rely on the map-container.mobile-hidden class we will add. */
   .map-container.mobile-hidden {
     display: none;
   }
+
 
   /* Adjust Header */
   header {

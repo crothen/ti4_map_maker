@@ -37,25 +37,12 @@
             <div class="sidebar" [class.mobile-expanded]="mobileSidebarState === 'expanded'"
                 [class.mobile-minimized]="mobileSidebarState === 'minimized'">
 
-                <!-- Mobile Resize Handle -->
-                <div class="mobile-resize-handle">
-                    <button (click)="setSidebarState('minimized')" [disabled]="mobileSidebarState === 'minimized'"
-                        style="background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 4px; width: 30px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                        <span style="font-size: 10px;">▼</span>
-                    </button>
-                    <div
-                        style="flex: 1; text-align: center; color: #64748b; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase;">
-                        Details
-                    </div>
-                    <button (click)="setSidebarState('expanded')" *ngIf="mobileSidebarState !== 'expanded'"
-                        style="background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 4px; width: 30px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                        <span style="font-size: 10px;">▲</span>
-                    </button>
-                    <button (click)="setSidebarState('default')" *ngIf="mobileSidebarState === 'expanded'"
-                        style="background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 4px; width: 30px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                        <span style="font-size: 10px;">▼</span>
-                    </button>
-                </div>
+                <!-- Mobile Expand/Collapse Float Button -->
+                <button class="mobile-expand-btn" (click)="toggleMobileSidebar()">
+                    <span *ngIf="mobileSidebarState === 'expanded'"
+                        style="font-size: 1.2rem; font-weight: bold;">✕</span>
+                    <span *ngIf="mobileSidebarState !== 'expanded'" style="font-size: 1.2rem;">▲</span>
+                </button>
 
                 <!-- Public Map Info (ReadOnly) -->
                 <div *ngIf="(authService.user$ | async) === null"
