@@ -373,13 +373,13 @@ h2 {
 
   .sidebar.mobile-expanded .mobile-expand-btn {
     transform: none;
-    top: 3px;
-    right: 28px;
+    top: 0;
+    right: 31px;
     border-radius: 4px;
     width: 48px;
     height: 40px;
-    border: 1px solid #475569;
-    background: #1e293b;
+    border: 1px solid #2563eb;
+    background: #3b82f6;
     color: white;
   }
 
