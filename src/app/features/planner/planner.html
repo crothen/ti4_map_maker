@@ -167,12 +167,13 @@
 
                     <div *ngIf="getSystemData(selectedHex.id) as sys">
                         <!-- Title at top for visibility -->
-                        <div
+                        <div class="system-header"
                             style="font-size: 1.1rem; color: #34d399; font-weight: bold; margin-bottom: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                             {{ sys.name }} <span style="color: #64748b; font-size: 0.8rem;">({{selectedHex.id}})</span>
                         </div>
 
-                        <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="system-content"
+                            style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
                             <div
                                 style="width: 120px; height: 138px; background: black; border: 1px solid #475569; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
                                 <img *ngIf="getTileUrl(selectedHex.id)" [src]="getTileUrl(selectedHex.id)"

@@ -65,6 +65,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
   usedTileIds: string[] = [];
   isMenuOpen = false;
   mobileSidebarState: 'minimized' | 'default' | 'expanded' = 'minimized';
+  initialSelectionDone = false;
   // List of ACTIVE index positions in the spiral grid. 
   // If empty, we default to standard full grid.
   mapShape: number[] = [];
@@ -138,6 +139,8 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
           this.initSim();
         }
         this.loadMap();
+
+
         this.cdr.detectChanges();
       });
     }
@@ -172,6 +175,16 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.selectedHex) {
         const updated = calculatedTiles.find(t => t.q === this.selectedHex.q && t.r === this.selectedHex.r);
         if (updated) this.selectedHex = updated;
+      }
+
+      // Auto-select Mecatol Rex (System 18) on first load
+      if (!this.initialSelectionDone) {
+        const mecatol = calculatedTiles.find(t => t.id === '18');
+        if (mecatol) {
+          this.selectedHex = mecatol;
+          this.mobileSidebarState = 'minimized';
+          this.initialSelectionDone = true;
+        }
       }
     });
 
