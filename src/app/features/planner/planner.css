@@ -372,6 +372,7 @@ h2 {
 
 
   .sidebar.mobile-expanded .mobile-expand-btn {
+    transform: none;
     top: 8px;
     right: 8px;
     border-radius: 4px;
