@@ -523,6 +523,10 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getTileUrl(id: string) {
+    const tile = this.systemTilesMap.get(id);
+    if (tile && tile.filename) {
+      return `https://milty.shenanigans.be/img/tiles/${tile.filename}`;
+    }
     return getTileImageUrl(id);
   }
 
@@ -797,6 +801,11 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
         // Pad if missing
         if (!tileData) {
           tileData = { id: '0', originalString: '0', imageUrl: '', position: tileIndex, rotation: 0 };
+        }
+
+        const sysTile = this.systemTilesMap.get(tileData.id);
+        if (sysTile && sysTile.filename) {
+          tileData.imageUrl = `https://milty.shenanigans.be/img/tiles/${sysTile.filename}`;
         }
 
         resultTiles.push({
