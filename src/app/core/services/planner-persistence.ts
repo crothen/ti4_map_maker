@@ -10,6 +10,7 @@ export interface SavedMap {
     mapString: string;
     mapShape?: number[];
     factionId: string;
+    comments?: { [hexId: string]: string };
     pools: {
         tactic: number;
         fleet: number;

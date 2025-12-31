@@ -2274,5 +2274,13 @@
         "planets": [],
         "anomalies": [],
         "wormhole": null
+    },
+    {
+        "id": "0",
+        "name": "Starting Position",
+        "type": "Home",
+        "planets": [],
+        "anomalies": [],
+        "wormhole": null
     }
 ]

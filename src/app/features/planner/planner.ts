@@ -78,6 +78,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
   // Details Panel State
   selectedHex: any | null = null;
   systemTilesMap: Map<string, any> = new Map();
+  mapComments: { [hexId: string]: string } = {};
 
   // Map Metadata
   currentMapId: string | null = null;
@@ -132,6 +133,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
         this.playerCount = map.playerCount;
         this.mapString = map.mapString;
         this.mapShape = map.mapShape || [];
+        this.mapComments = map.comments || {};
 
         const faction = this.factions.find(f => f.id === map.factionId);
         if (faction) {
@@ -162,7 +164,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
       this.renderer.setData(calculatedTiles);
 
       // Update Used Tile IDs List
-      const ids = new Set(tiles.map(t => t.id).filter(id => id !== '0'));
+      const ids = new Set(tiles.map(t => t.id).filter(id => !!id));
       this.usedTileIds = Array.from(ids).sort((a, b) => {
         const numA = parseInt(a);
         const numB = parseInt(b);
@@ -574,6 +576,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     try {
       if (this.currentMapId) {
+
         await this.plannerService.updateMap(this.currentMapId, {
           userId: user.uid,
           name: this.mapName,
@@ -581,6 +584,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
           mapString: this.mapString,
           mapShape: this.mapShape,
           factionId: this.selectedFaction.id,
+          comments: this.mapComments,
           pools,
           timestamp: Date.now()
         });
@@ -593,6 +597,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
           mapString: this.mapString,
           mapShape: this.mapShape,
           factionId: this.selectedFaction.id,
+          comments: this.mapComments,
           pools,
           timestamp: Date.now()
         });
