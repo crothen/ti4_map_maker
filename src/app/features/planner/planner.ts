@@ -611,7 +611,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   isTileUsed(id: string): boolean {
-    if (id === '0') return false;
+    if (id === 'START') return false;
     return this.usedTileIds.includes(id);
   }
 

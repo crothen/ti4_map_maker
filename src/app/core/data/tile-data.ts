@@ -8,11 +8,13 @@ export const TILE_IDS = [
     // Thunder's Edge Expansion (92-128)
     ...Array.from({ length: 37 }, (_, i) => (92 + i).toString()),
     // Home System Placeholders (generic)
-    '0'
+    'START'
 ];
 
 export function getTileImageUrl(id: string): string {
-    if (!id || id === '-1') return '';
+    if (!id || id === '-1' || id === '0') return '';
+
+    if (id === 'START') return 'https://milty.shenanigans.be/img/tiles/ST_0.png';
 
     let urlId = id.toUpperCase();
     // Remove leading zero if present and string is numeric-ish (e.g. '05' -> '5')
