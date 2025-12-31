@@ -803,7 +803,14 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
           tileData = { id: '0', originalString: '0', imageUrl: '', position: tileIndex, rotation: 0 };
         }
 
-        const sysTile = this.systemTilesMap.get(tileData.id);
+        let sysTile = this.systemTilesMap.get(tileData.id);
+        if (!sysTile) {
+          sysTile = this.systemTilesMap.get(tileData.id.toLowerCase());
+        }
+        if (!sysTile) {
+          sysTile = this.systemTilesMap.get(tileData.id.toUpperCase());
+        }
+
         if (sysTile && sysTile.filename) {
           tileData.imageUrl = `https://milty.shenanigans.be/img/tiles/${sysTile.filename}`;
         }
