@@ -171,7 +171,7 @@ export const FACTIONS: Faction[] = [
         startingUnits: [],
         startTech: [],
         leaders: [],
-        homeSystemId: '0',
+        homeSystemId: '00',
         imageUrl: "https://twilight-imperium.fandom.com/wiki/The_Crimson_Rebellion"
     }
 ];

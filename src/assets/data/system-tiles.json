@@ -1701,7 +1701,7 @@
         "faction": "Deepwrought"
     },
     {
-        "id": "96A",
+        "id": "96a",
         "name": "Cronos / Tallin",
         "type": "Home",
         "planets": [
@@ -1726,7 +1726,7 @@
         "faction": "Firmament"
     },
     {
-        "id": "96B",
+        "id": "96b",
         "name": "Cronos Hollow / Tallin Hollow",
         "type": "Home",
         "planets": [
