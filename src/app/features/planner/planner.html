@@ -403,7 +403,16 @@
 
         <div
             style="padding: 1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 0.5rem; overflow-y: auto;">
-            <div *ngFor="let tid of filteredTiles" (click)="selectTileForPending(tid)"
+
+            <!-- Empty/Delete Tile Option -->
+            <div (click)="selectTileForPending('-1')"
+                style="aspect-ratio: 1; cursor: pointer; background: #0f172a; border-radius: 0.25rem; border: 1px dashed #ef4444; position: relative; display: flex; align-items: center; justify-content: center; color: #ef4444;"
+                class="hover-tile">
+                <span style="font-size: 0.8rem; font-weight: bold;">EMPTY</span>
+            </div>
+
+            <div *ngFor="let tid of filteredTiles" (click)="!isTileUsed(tid) ? selectTileForPending(tid) : null"
+                [style.opacity]="isTileUsed(tid) ? 0.2 : 1" [style.pointer-events]="isTileUsed(tid) ? 'none' : 'auto'"
                 style="aspect-ratio: 1; cursor: pointer; background: black; border-radius: 0.25rem; border: 1px solid #334155; position: relative; transition: all 0.2s;"
                 class="hover-tile">
 

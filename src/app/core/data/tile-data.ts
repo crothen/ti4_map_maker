@@ -12,7 +12,7 @@ export const TILE_IDS = [
 ];
 
 export function getTileImageUrl(id: string): string {
-    if (!id) return ''; // Empty/Back
+    if (!id || id === '-1') return '';
 
     let urlId = id.toUpperCase();
     // Remove leading zero if present and string is numeric-ish (e.g. '05' -> '5')

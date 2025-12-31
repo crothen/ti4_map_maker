@@ -436,7 +436,7 @@ export class HexRenderer {
                 if (tile.q === 0 && tile.r === 0) {
                     this.ctx.fillStyle = '#4f46e5'; // Indigo/Purple for Center
                 } else {
-                    this.ctx.fillStyle = '#334155';
+                    this.ctx.fillStyle = '#0f172a'; // Darker background for missing/empty
                 }
 
                 this.ctx.fill();

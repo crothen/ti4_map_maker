@@ -435,7 +435,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
     // Expand map string if needed
     if (index >= tokens.length) {
       while (tokens.length <= index) {
-        tokens.push('0');
+        tokens.push('-1');
       }
     }
 
@@ -588,7 +588,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
           pools,
           timestamp: Date.now()
         });
-        alert('Map updated successfully!');
+        // alert('Map updated successfully!'); 
       } else {
         const docRef = await this.plannerService.saveMap({
           userId: user.uid,
@@ -602,12 +602,17 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
           timestamp: Date.now()
         });
         this.currentMapId = docRef.id;
-        alert('Map saved successfully!');
+        // alert('Map saved successfully!');
       }
     } catch (error) {
       console.error('Error saving map', error);
       alert('Error saving map');
     }
+  }
+
+  isTileUsed(id: string): boolean {
+    if (id === '0') return false;
+    return this.usedTileIds.includes(id);
   }
 
   toggleMenu() {
