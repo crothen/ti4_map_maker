@@ -1,6 +1,6 @@
 [
     {
-        "id": "0",
+        "id": "00",
         "name": "Starting Position",
         "type": "Home",
         "planets": [],
@@ -2279,14 +2279,6 @@
         "id": "128",
         "name": "Empty",
         "type": "Blue",
-        "planets": [],
-        "anomalies": [],
-        "wormhole": null
-    },
-    {
-        "id": "START",
-        "name": "Starting Position",
-        "type": "Home",
         "planets": [],
         "anomalies": [],
         "wormhole": null
