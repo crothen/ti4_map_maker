@@ -14,9 +14,12 @@ export const TILE_IDS = [
 export function getTileImageUrl(id: string): string {
     if (!id || id === '-1' || id === '0') return '';
 
-    let urlId = id.toUpperCase();
-    // Remove leading zero if present and string is numeric-ish (e.g. '05' -> '5')
-    if (urlId.startsWith('0') && urlId.length > 1) {
+    let urlId = id;
+
+    // Remove leading zero if present and string is numeric-ish (e.g. '05' -> '5', '00' -> '0')
+    if (urlId === '00') {
+        urlId = '0';
+    } else if (urlId.startsWith('0') && urlId.length > 1 && !isNaN(parseInt(urlId.substring(1)))) {
         urlId = urlId.substring(1);
     }
 

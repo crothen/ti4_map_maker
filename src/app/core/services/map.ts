@@ -61,7 +61,7 @@ export class MapService {
       // Handle "0" as generic empty/placeholder
       let imageUrl = '';
       if (id !== '0') {
-        let urlId = id.toUpperCase();
+        let urlId = id;
 
         // Remove leading zero if present (e.g. '05' -> '5')
         if (urlId.startsWith('0') && urlId.length > 1) {

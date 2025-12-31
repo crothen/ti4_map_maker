@@ -1829,7 +1829,7 @@
         "wormhole": null,
         "isHomeSystem": true,
         "faction": "Firmament",
-        "filename": "ST_96A.png"
+        "filename": "ST_96a.png"
     },
     {
         "id": "96b",
@@ -1855,7 +1855,7 @@
         "wormhole": null,
         "isHomeSystem": true,
         "faction": "Obsidian",
-        "filename": "ST_96B.png"
+        "filename": "ST_96b.png"
     },
     {
         "id": "97",
