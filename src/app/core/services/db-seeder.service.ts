@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Firestore, doc, setDoc, writeBatch } from '@angular/fire/firestore';
+import { Firestore, doc, setDoc, writeBatch, collection, getDocs } from '@angular/fire/firestore';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -15,6 +15,34 @@ export class DbSeederService {
 
     async seedSystemTiles() {
         try {
+            console.log('Deleting existing system tiles...');
+            const colRef = collection(this.firestore, 'system-tiles');
+            const snapshot = await getDocs(colRef);
+
+            if (!snapshot.empty) {
+                const deleteBatches: any[] = [];
+                let currentBatch = writeBatch(this.firestore);
+                let operationCount = 0;
+
+                snapshot.docs.forEach(doc => {
+                    currentBatch.delete(doc.ref);
+                    operationCount++;
+
+                    if (operationCount === 450) {
+                        deleteBatches.push(currentBatch.commit());
+                        currentBatch = writeBatch(this.firestore);
+                        operationCount = 0;
+                    }
+                });
+
+                if (operationCount > 0) {
+                    deleteBatches.push(currentBatch.commit());
+                }
+
+                await Promise.all(deleteBatches);
+                console.log(`Deleted ${snapshot.size} existing tiles.`);
+            }
+
             // Load the JSON data
             const tiles = await firstValueFrom(this.http.get<any[]>('/assets/data/system-tiles.json'));
 
