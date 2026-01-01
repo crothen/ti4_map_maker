@@ -10,7 +10,6 @@ import { FactionService } from '../../core/services/faction';
 import { AuthService } from '../../core/services/auth';
 import { PlannerService } from '../../core/services/planner-persistence';
 import { ShapeService, MapShape } from '../../core/services/shape.service';
-import { TILE_IDS, getTileImageUrl } from '../../core/data/tile-data';
 import { firstValueFrom } from 'rxjs';
 import { DbSeederService } from '../../core/services/db-seeder.service';
 
@@ -39,7 +38,7 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Edit Mode State
   isEditMode = false; // Enabled byAuth
-  availableTiles = TILE_IDS;
+  availableTiles: string[] = [];
   tileSearchTerm = '';
   selectedBrushId: string | null = null;
 
@@ -114,6 +113,18 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.mapService.getSystemTilesData().subscribe(tiles => {
       tiles.forEach(t => this.systemTilesMap.set(t.id, t));
+      this.availableTiles = Array.from(this.systemTilesMap.keys());
+      this.availableTiles.sort((a, b) => {
+        if (a === '00') return -1;
+        if (b === '00') return 1;
+        const numA = parseInt(a);
+        const numB = parseInt(b);
+        if (!isNaN(numA) && !isNaN(numB)) {
+          if (numA !== numB) return numA - numB;
+          return a.localeCompare(b);
+        }
+        return a.localeCompare(b);
+      });
     });
 
     this.route.paramMap.subscribe(params => {
@@ -461,6 +472,8 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // 2. Filter by Filters
     tiles = tiles.filter(t => {
+      if (t.id === '00') return true;
+
       const idNum = parseInt(t.id);
       const isNum = !isNaN(idNum);
 
@@ -507,8 +520,10 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Sort: Home systems at end? ID numeric sort?
     tiles.sort((a, b) => {
-      const aId = parseInt(a.id) || 9999;
-      const bId = parseInt(b.id) || 9999;
+      const pA = parseInt(a.id);
+      const pB = parseInt(b.id);
+      const aId = isNaN(pA) ? 9999 : pA;
+      const bId = isNaN(pB) ? 9999 : pB;
       return aId - bId;
     });
 
@@ -527,7 +542,14 @@ export class PlannerComponent implements OnInit, AfterViewInit, OnDestroy {
     if (tile && tile.filename) {
       return `https://milty.shenanigans.be/img/tiles/${tile.filename}`;
     }
-    return getTileImageUrl(id);
+
+    // Fallback logic (replicates deleted getTileImageUrl but simpler)
+    let urlId = id;
+    if (urlId === '00') urlId = '0';
+    else if (urlId.startsWith('0') && urlId.length > 1 && !isNaN(parseInt(urlId.substring(1)))) {
+      urlId = urlId.substring(1);
+    }
+    return `https://milty.shenanigans.be/img/tiles/ST_${urlId}.png`;
   }
 
   selectBrush(id: string) {

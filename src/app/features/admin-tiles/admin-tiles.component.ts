@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MapService } from '../../core/services/map';
 import { DbSeederService } from '../../core/services/db-seeder.service';
 import { Firestore, doc, updateDoc } from '@angular/fire/firestore';
-import { getTileImageUrl } from '../../core/data/tile-data';
+
 
 @Component({
     selector: 'app-admin-tiles',
@@ -53,8 +53,10 @@ export class AdminTilesComponent implements OnInit {
     refreshTiles() {
         this.mapService.getSystemTilesData().subscribe(tiles => {
             this.tiles = tiles.sort((a, b) => {
-                const aId = parseInt(a.id) || 999;
-                const bId = parseInt(b.id) || 999;
+                const pA = parseInt(a.id);
+                const pB = parseInt(b.id);
+                const aId = isNaN(pA) ? 999 : pA;
+                const bId = isNaN(pB) ? 999 : pB;
                 return aId - bId;
             });
             // Reselect if possible
@@ -106,6 +108,10 @@ export class AdminTilesComponent implements OnInit {
     }
 
     getTileImageUrl(id: string) {
-        return getTileImageUrl(id);
+        const tile = this.tiles.find(t => t.id === id);
+        if (tile && tile.filename) {
+            return `https://milty.shenanigans.be/img/tiles/${tile.filename}`;
+        }
+        return `https://milty.shenanigans.be/img/tiles/ST_${id}.png`;
     }
 }
